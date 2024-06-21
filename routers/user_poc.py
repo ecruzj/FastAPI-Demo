@@ -1,9 +1,14 @@
 import sys
+
+from models.user_poc import UserPoc
+from schemas.user_poc import UserPocRequest
+from utils import get_password_hash
+
 sys.path.append("..") # Adds higher directory to python modules path.
 
 from fastapi import APIRouter, Path, HTTPException, Query, Body
 from starlette import status
-from data import USERS_POC
+from data import USERS_POC, get_new_user_id_poc
 
 router = APIRouter(
     prefix="/userspoc",
@@ -36,3 +41,21 @@ async def get_userpoc(email_address: str = Query(None, description="The email ad
         return get_userpoc_by_userid(userId)
 
     return USERS_POC
+
+@router.post("/", status_code=status.HTTP_201_CREATED)
+async def create_user_poc(user_request: UserPocRequest = Body(...)):
+    new_userpoc = UserPoc(
+        userid=None,
+        Email__address=user_request.Email__address,
+        Password=get_password_hash(user_request.Password),
+        First__name=user_request.First__name,
+        Last__name=user_request.Last__name,
+        Business__operating__number=user_request.Business__operating_number,
+        Business__number=user_request.Business__number,
+        Business__legal__name=user_request.Business__legal__name,
+        Contact__number=user_request.Contact__number,
+        Business__address=user_request.Business__address,
+        Mailing__address=user_request.Mailing__address
+    )
+    USERS_POC.append(get_new_user_id_poc(new_userpoc))
+    return new_userpoc

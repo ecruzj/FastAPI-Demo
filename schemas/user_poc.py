@@ -2,7 +2,7 @@ from pydantic import BaseModel, Field
 from typing import Optional
 
 class UserPocRequest(BaseModel):
-    userid: str
+    userid: Optional[int] = None
     Email__address: str = Field(..., min_length=5, max_length=100)
     Password: str = Field(..., min_length=4)
     First__name: str = Field(..., min_length=1)
@@ -17,7 +17,6 @@ class UserPocRequest(BaseModel):
     class Config:
         json_schema_extra = {
             'example': {
-                'userid': '0bb05161-0ac1-4dea-9d94-76cfb4901e2e',
                 'Email__address': 'example@example.com',
                 'Password': 'securepassword123',
                 'First__name': 'John',

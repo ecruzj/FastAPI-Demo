@@ -54,11 +54,12 @@ def generate_user_poc_data():
         UserPoc('57784562-5a72-4a91-be4e-4b8d070e467b', 'diana.ross@example.com', 'securepassword6', 'Diana', 'Ross', '567890123', 'BN00006', 'Ross Inc.', '789-012-3456', '128 Business St.', '461 Mailing Ave.'),
         UserPoc('578079ea-1c13-4546-ba4e-458b82c96d86', 'edward.king@example.com', 'securepassword7', 'Edward', 'King', '678901234', 'BN00007', 'King Enterprises', '890-123-4567', '129 Business St.', '462 Mailing Ave.'),
         UserPoc('85527d7e-17aa-44bb-9f7a-c88b652c827c', 'fiona.hill@example.com', 'securepassword8', 'Fiona', 'Hill', '789012345', 'BN00008', 'Hill Ltd.', '901-234-5678', '130 Business St.', '463 Mailing Ave.'),
-        UserPoc('8d8b13f5-fdfd-4711-9cfb-d4719843ca6b', 'george.washington@example.com', 'securepassword9', 'George', 'Washington', '890123456', 'BN00009', 'Washington Group', '012-345-6789', '131 Business St.', '464 Mailing Ave.'),
+        UserPoc('8d8b13f5-fdfd-4711-9cfb-d4719843ca6b', 'vladberest@gmail.com', 'securepassword9', 'George', 'Washington', '890123456', 'BN00009', 'Washington Group', '012-345-6789', '131 Business St.', '464 Mailing Ave.'),
         UserPoc('b01656c0-5621-4427-afe4-2e19d8656e1a', 'henry.adams@example.com', 'securepassword10', 'Henry', 'Adams', '901234567', 'BN00010', 'Adams & Partners', '123-456-7891', '132 Business St.', '465 Mailing Ave.'),
     ]
 
 USERS_POC = generate_user_poc_data()
 
-def get_new_user_id_poc(new_user_poc: UserPoc):
-    return str(uuid.uuid4())
+def get_new_user_id_poc(new_userpoc: UserPoc):
+    new_userpoc.userid = str(uuid.uuid4())
+    return new_userpoc
