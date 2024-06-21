@@ -15,17 +15,17 @@ router = APIRouter(
     responses={status.HTTP_404_NOT_FOUND: {"description": "Not Found"}}
 )
 
-@router.get("/", status_code=status.HTTP_200_OK)
-async def get_all_user_addresses():
-    return USERS_ADDRESS
-
-@router.get("/{userId}", status_code=status.HTTP_200_OK)
-async def get_user_address_by_user_id(userId: str = Path(..., description="The userId of the user address to get")):
+def get_user_address_by_user_id(userId: str):
     for address in USERS_ADDRESS:
         if address.userId == userId:
             return address
-
     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail='User address not found')
+
+@router.get("/", status_code=status.HTTP_200_OK)
+async def get_user_addresses(userId: str = Query(None, description="The userId of the user address to get")):
+    if userId:
+        return get_user_address_by_user_id(userId)
+    return USERS_ADDRESS
 
 @router.post("/", status_code=status.HTTP_201_CREATED)
 async def create_user_address(user_address_request: UserAddressRequest):
