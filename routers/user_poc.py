@@ -50,7 +50,7 @@ async def create_user_poc(user_request: UserPocRequest = Body(...)):
         Password=get_password_hash(user_request.Password),
         First__name=user_request.First__name,
         Last__name=user_request.Last__name,
-        Business__operating__number=user_request.Business__operating_number,
+        Business__operating__number=user_request.Business__operating__number,
         Business__number=user_request.Business__number,
         Business__legal__name=user_request.Business__legal__name,
         Contact__number=user_request.Contact__number,
@@ -59,3 +59,37 @@ async def create_user_poc(user_request: UserPocRequest = Body(...)):
     )
     USERS_POC.append(get_new_user_id_poc(new_userpoc))
     return new_userpoc
+
+@router.put("/{userId}", status_code=status.HTTP_200_OK)
+async def update_userpoc(userId: str = Path(..., description="UserId to be update"),
+                      user_request: UserPocRequest = Body(...)):
+    userpoc = get_userpoc_by_userid(userId)
+
+    if user_request.Email__address is not None:
+        userpoc.Email__address = user_request.Email__address
+    if user_request.Password is not None:
+        userpoc.Password = get_password_hash(user_request.Password)
+    if user_request.First__name is not None:
+        userpoc.First__name = user_request.First__name
+    if user_request.Last__name is not None:
+        userpoc.Last__name = user_request.Last__name
+    if user_request.Business__operating__number is not None:
+        userpoc.Business__operating__number = user_request.Business__operating__number
+    if user_request.Business__number is not None:
+        userpoc.Business__number = user_request.Business__number
+    if user_request.Business__legal__name is not None:
+        userpoc.Business__legal__name = user_request.Business__legal__name
+    if user_request.Contact__number is not None:
+        userpoc.Contact__number = user_request.Contact__number
+    if user_request.Business__address is not None:
+        userpoc.Business__address = user_request.Business__address
+    if user_request.Mailing__address is not None:
+        userpoc.Mailing__address = user_request.Mailing__address
+
+    return userpoc
+
+@router.delete("/{userId}", status_code=status.HTTP_200_OK)
+async def delete_userpoc(userId: str = Path(..., description="The ID of the user to delete")):
+    userpoc = get_userpoc_by_userid(userId)
+    USERS_POC.remove(userpoc)
+    return {"message": "User deleted successfully"}

@@ -7,7 +7,7 @@ class UserPocRequest(BaseModel):
     Password: str = Field(..., min_length=4)
     First__name: str = Field(..., min_length=1)
     Last__name: str = Field(..., min_length=1)
-    Business__operating_number: str = Field(..., min_length=5)
+    Business__operating__number: str = Field(..., min_length=5)
     Business__number: str = Field(..., min_length=5)
     Business__legal__name: str = Field(..., min_length=1)
     Contact__number: str = Field(..., min_length=5)
@@ -21,7 +21,7 @@ class UserPocRequest(BaseModel):
                 'Password': 'securepassword123',
                 'First__name': 'John',
                 'Last__name': 'Doe',
-                'Business__operating_number': '123456789',
+                'Business__operating__number': '123456789',
                 'Business__number': '987654321',
                 'Business__legal__name': 'Example Inc.',
                 'Contact__number': '123-456-7890',
