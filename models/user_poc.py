@@ -3,27 +3,27 @@ from dataclasses import dataclass
 @dataclass
 class UserPoc:
     userid: str
-    email__address: str
-    password: str
-    first__name: str
-    last__name: str
-    business__operating__number: str
-    business__number: str
-    business__legal__name: str
-    contact__number: str
-    business__address: str
-    mailing__address: str
+    Email__address: str
+    Password: str
+    First__name: str
+    Last__name: str
+    Business__operating__number: str
+    Business__number: str
+    Business__legal__name: str
+    Contact__number: str
+    Business__address: str
+    Mailing__address: str
 
-    def __init__(self, userid, email__address, password, first__name, last__name, business__operating__number,
-                 business__number, business__legal__name, contact__number, business__address, mailing__address):
+    def __init__(self, userid, Email__address, Password, First__name, Last__name, Business__operating__number,
+                 Business__number, Business__legal__name, Contact__number, Business__address, Mailing__address):
         self.userid = userid
-        self.email__address = email__address
-        self.password = password
-        self.first__name = first__name
-        self.last__name = last__name
-        self.business__operating__number = business__operating__number
-        self.business__number = business__number
-        self.business__legal__name = business__legal__name
-        self.contact__number = contact__number
-        self.business__address = business__address
-        self.mailing__address = mailing__address
+        self.Email__address = Email__address
+        self.Password = Password
+        self.First__name = First__name
+        self.Last__name = Last__name
+        self.Business__operating__number = Business__operating__number
+        self.Business__number = Business__number
+        self.Business__legal__name = Business__legal__name
+        self.Contact__number = Contact__number
+        self.Business__address = Business__address
+        self.Mailing__address = Mailing__address
