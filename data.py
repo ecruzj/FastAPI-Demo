@@ -1,6 +1,8 @@
 import sys
 import uuid
 
+from models.user_address import UserAddress
+
 sys.path.append("..") # Adds higher directory to python modules path.
 
 from models.company import Company
@@ -63,3 +65,29 @@ USERS_POC = generate_user_poc_data()
 def get_new_user_id_poc(new_userpoc: UserPoc):
     new_userpoc.userid = str(uuid.uuid4())
     return new_userpoc
+
+def generate_user_address_data():
+    return [
+        UserAddress('0bb05161-0ac1-4dea-9d94-76cfb4901e2e', '101', '456', 'Maple Street', 'PO1234', '12345',
+                    'Springfield', 'Illinois', 'USA', '555-1234', '101', '555-5678'),
+        UserAddress('24d89db3-f4ba-4ede-a336-aa115bc4f195', '102', '457', 'Oak Street', 'PO1235', '12346',
+                    'Shelbyville', 'Indiana', 'USA', '555-1235', '102', '555-5679'),
+        UserAddress('2be40cb6-4bfe-490d-a21a-62aab0f424a2', '103', '458', 'Pine Street', 'PO1236', '12347',
+                    'Capital City', 'Ohio', 'USA', '555-1236', '103', '555-5680'),
+        UserAddress('3381fe80-a101-43bb-9324-7e064bf0547c', '104', '459', 'Cedar Street', 'PO1237', '12348',
+                    'Ogdenville', 'Kentucky', 'USA', '555-1237', '104', '555-5681'),
+        UserAddress('3d47f066-49ae-48c1-ae80-e855f4948361', '105', '460', 'Birch Street', 'PO1238', '12349',
+                    'North Haverbrook', 'Missouri', 'USA', '555-1238', '105', '555-5682'),
+        UserAddress('57784562-5a72-4a91-be4e-4b8d070e467b', '106', '461', 'Elm Street', 'PO1239', '12350', 'Brockway',
+                    'Michigan', 'USA', '555-1239', '106', '555-5683'),
+        UserAddress('578079ea-1c13-4546-ba4e-458b82c96d86', '107', '462', 'Willow Street', 'PO1240', '12351', 'Monroe',
+                    'Georgia', 'USA', '555-1240', '107', '555-5684'),
+        UserAddress('85527d7e-17aa-44bb-9f7a-c88b652c827c', '108', '463', 'Ash Street', 'PO1241', '12352',
+                    'Springfield', 'California', 'USA', '555-1241', '108', '555-5685'),
+        UserAddress('8d8b13f5-fdfd-4711-9cfb-d4719843ca6b', '109', '464', 'Cherry Street', 'PO1242', '12353',
+                    'Springfield', 'Nevada', 'USA', '555-1242', '109', '555-5686'),
+        UserAddress('b01656c0-5621-4427-afe4-2e19d8656e1a', '110', '465', 'Peach Street', 'PO1243', '12354',
+                    'Springfield', 'Texas', 'USA', '555-1243', '110', '555-5687'),
+    ]
+
+USERS_ADDRESS = generate_user_address_data()

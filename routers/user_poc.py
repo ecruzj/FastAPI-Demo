@@ -1,11 +1,9 @@
 import sys
+sys.path.append("..") # Adds higher directory to python modules path.
 
 from models.user_poc import UserPoc
 from schemas.user_poc import UserPocRequest
 from utils import get_password_hash
-
-sys.path.append("..") # Adds higher directory to python modules path.
-
 from fastapi import APIRouter, Path, HTTPException, Query, Body
 from starlette import status
 from data import USERS_POC, get_new_user_id_poc
